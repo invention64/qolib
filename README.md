@@ -1,2 +1,2 @@
 # qolib
-Basic C lib
+A general library for beginner C programmers
