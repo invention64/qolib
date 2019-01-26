@@ -1,5 +1,10 @@
-test : test.c qolib.o qlist.o
+objects = qolib.o qlist.o
+test : test.c $(objects)
 	gcc -std=c11 -g -o test test.c qolib.o qlist.o -I.
+
+install : $(objects)
+	ar -cq libqolib.a $(objects)
+	mv libqolib.a /usr/lib/
 
 qolib.o : qolib.c qolib.h constants.h
 	gcc -std=c11 -c qolib.c
