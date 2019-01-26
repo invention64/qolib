@@ -1,5 +1,3 @@
-
-
 typedef struct TCPClient {
     int socket;
 
