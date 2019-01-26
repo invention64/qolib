@@ -1,25 +1,6 @@
 #ifndef _qolib_h
 #define _qolib_h
 
-//err levels
-
-#define DEBUG 0
-#define INFO 1
-#define WARNING 2
-#define ERROR 3
-#define CRITICAL 4
-
-#define SEVERITY 0
-
-#define max(a,b) \
- ({ __typeof__ (a) _a = (a); \
- __typeof__ (b) _b = (b); \
- _a > _b ? _a : _b; })
-#define min(a,b) \
- ({ __typeof__ (a) _a = (a); \
- __typeof__ (b) _b = (b); \
- _a < _b ? _a : _b; })
-
 typedef union qol_num qol_num;
 
 //When we have a reference this needs to be front page

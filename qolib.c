@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include "constants.h"
 #include "qolib.h"
 
 //cab stands for CRASH AND BURN
