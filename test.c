@@ -50,6 +50,10 @@ int main(void)
 	{
 		printf("popped %d\n",stack_pop(stk).i);
 	}
+	
+	qol_log(3,"test 1");
+	qol_log(4,"test 2");
+	qol_log(0,"test 3");
 
 	return 420;
 }

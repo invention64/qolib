@@ -1,7 +1,6 @@
 //This file is for the lists originally created for qolib.c
 //When possible there should be sub files for bigger grouped libs
 //so that people can load them individually
-#define DEBUG
 #ifndef _qlist_h
 #define _qlist_h
 #include "qolib.h"
@@ -32,10 +31,7 @@ void qol_delete_piece(qol_list * list, int index);
 qol_num stack_pop(qol_list * list);
 void stack_push(qol_list * list, qol_num n);
 
-#ifdef DEBUG
-//activate debug functions
 void qol_print_list(qol_list l);
-#endif
 
 #endif
 

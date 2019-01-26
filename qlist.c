@@ -1,4 +1,3 @@
-#define DEBUG
 #include <stdlib.h>
 #include <stdio.h>
 #include "qolib.h"
@@ -98,7 +97,6 @@ void stack_push(qol_list * stk, qol_num n)
 	stk->head = p;
 }
 
-#ifdef DEBUG
 //For testing purposes only
 void qol_print_list(qol_list l) 
 {
@@ -109,5 +107,4 @@ void qol_print_list(qol_list l)
 	} while(curr_piece!=NULL);
 	printf("\n");
 }
-#endif
 

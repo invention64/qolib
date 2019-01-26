@@ -1,6 +1,6 @@
-#define DEBUG
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <time.h>
 #include "qolib.h"
@@ -19,6 +19,66 @@ void qol_cab (char * msg)
 	}
 	exit(EXIT_FAILURE);
 } 
+
+void qassert(int test)
+{
+	if(!test)
+		qol_cab("Failed assert");
+}
+
+void msg_assert(int test, char * msg)
+{
+	char out[40];
+	if (!test)
+	{
+		strcpy(out,"Failed: ");
+		strcat(out,msg);
+		qol_cab(out);
+	}
+}
+
+void qol_log(int severity,char * msg)
+{
+	time_t curr_t;
+	char* t_string;
+	curr_t = time(NULL);
+	msg_assert(curr_t != ((time_t)-1),"Check time assignment");
+	t_string = ctime(&curr_t);
+	msg_assert(t_string!=NULL,"Check time string NULL");
+	if (severity<SEVERITY){
+		return;	
+	}
+	FILE * fp;
+
+	fp = fopen("error.log","a");
+
+	char * out = (char *)malloc(20);	
+	
+	switch(severity)
+	{
+		case 0:
+		out="Debug:";
+		break;
+		case 1:
+		out="Info:";
+		break;
+		case 2:
+		out="Warning:";
+		break;
+		case 3:
+		out="Error:";
+		break;
+		case 4:
+		out="Critical:";
+		break;
+		default:
+		qol_cab("Incorrect severity code!");
+	}
+	
+	fprintf(stderr,"%s %s\n",out,msg);
+	fprintf(fp,"%s %s %s\n",t_string,out,msg);
+	fclose(fp);
+}
 
 qol_num * stopwatch( int (*f)() ,double test_num)
 {

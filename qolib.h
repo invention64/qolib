@@ -1,6 +1,18 @@
-#define DEBUG
 #ifndef _qolib_h
 #define _qolib_h
+
+//err levels
+
+#define DEBUG 0
+#define INFO 1
+#define WARNING 2
+#define ERROR 3
+#define CRITICAL 4
+
+#ifndef SEVERITY
+#define SEVERITY 2
+#endif
+
 #define max(a,b) \
  ({ __typeof__ (a) _a = (a); \
  __typeof__ (b) _b = (b); \
@@ -9,7 +21,7 @@
  ({ __typeof__ (a) _a = (a); \
  __typeof__ (b) _b = (b); \
  _a < _b ? _a : _b; })
-
+#include "qolib.h"
 
 //When we have a reference this needs to be front page
 typedef union qol_num {
@@ -26,14 +38,11 @@ typedef union qol_num {
 } qol_num;
 
 void qol_cab(char * msg);
+void qol_log(int severity,char * msg);
+void qassert(int test);
 
 qol_num * stopwatch( int (*f)() ,double test_num);
 
 void print_array(int * i);
-
-
-#ifdef DEBUG
-//Debug only functions here
-#endif
 
 #endif
