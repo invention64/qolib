@@ -4,9 +4,11 @@
 #include "constants.h"
 #include "qolib.h"
 #include "qlist.h"
+#include "qonum.h"
 
 int main(void)
 {
+	// use qolnum
 	qol_num a;
 	qol_num b;
 
@@ -19,8 +21,8 @@ int main(void)
 		numbers[i].i = i*3;
 	}	
 
+	// use qol list
 	qol_list * l = qol_new_list(a);
-	
 	
 	qol_print_list(*l);
 	
@@ -41,6 +43,7 @@ int main(void)
 	temp.i=4;
 	qol_list * stk = qol_new_list(temp);
 
+	// qol stacks
 	for (int i=0;i<10;i++)
 	{
 		printf("storing %d\n",numbers[i].i);
@@ -52,6 +55,7 @@ int main(void)
 		printf("popped %d\n",stack_pop(stk).i);
 	}
 
+	// qol log
 	printf("Severity is %d\nRunning tests of log levels\n\n", SEVERITY);
 	
 	for (int i=0;i<5;i++)
@@ -60,5 +64,12 @@ int main(void)
 		printf("%d\n\n",i);
 	}
 
-	return 420;
+	// qol prime
+	int notAPrime = 12;
+	int aPrime = 7;
+
+	printf("%d prime status: %d", notAPrime, isPrime(notAPrime));
+	printf("%d prime status: %d", aPrime, isPrime(aPrime));
+
+	return 420; // ecks dee
 }

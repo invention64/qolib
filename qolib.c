@@ -53,7 +53,7 @@ void qol_log(int severity,char * msg)
 
 	FILE * fp;
 
-	fp = fopen("error.log","a");
+	fp = fopen("qol.log","a");
 
 	char * out = (char *)malloc(20);	
 	

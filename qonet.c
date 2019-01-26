@@ -1,4 +1,5 @@
 #include "qonet.h"
+#include "constants.h"
 #include "qolib.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -16,7 +17,7 @@ IP4 GenerateIPv4(char* dstIP, unsigned short dstPort) {
     // Set DST
     struct in_addr ip;
     ip.s_addr = inet_addr(dstIP);
-    //printf("IP: %ld\r\n", ip.s_addr);
+    qol_log(0, sprintf("IP: %ld\r\n", ip.s_addr));
     dst.sin_family = AF_INET;
     dst.sin_addr = ip;
     dst.sin_port = htons(dstPort);
@@ -28,20 +29,20 @@ IP4 GenerateIPv4(char* dstIP, unsigned short dstPort) {
 
 TCPClient OpenTCP(IP4 target) {
     // Local Socket
-    //printf("Generating socket...\r\n");
+    qol_log(1, "Generating socket...\r\n");
     int sock = socket(AF_INET, SOCK_STREAM, 0); 
     
     if (sock < 0) {
         qol_cab("Failed to create socket.\r\n");
     } else {
-        //printf("Socket Generated!\r\n");
+        qol_log(1, "Socket Generated!\r\n");
     }
 
     // Connect Local Socket
     if(connect(sock, &target.dst, sizeof(target.dst)) > 0) {
-        error("Failed to connect..........");
+        qol_cab("Failed to connect..........");
     } else {
-        //printf("Connected!\r\n");
+        qol_log(1, "Connected!\r\n");
         TCPClient client;
         client.socket = sock;
         return client;
@@ -57,7 +58,8 @@ char* RecieveArrayTCP(TCPClient client, int bufferSize) {
     int sock = client.socket;
     char buffer[bufferSize];
     bzero(buffer, bufferSize);
-    return recv(sock, buffer, bufferSize, 0);
+    int amnt = recv(sock, buffer, bufferSize, 0);
+    return buffer;
 }
 
 void CloseTCP(TCPClient client) {

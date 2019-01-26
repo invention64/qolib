@@ -2,4 +2,4 @@
 ##########
 *.o
 test
-error.log
+qol.log

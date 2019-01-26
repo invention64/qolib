@@ -1,6 +1,6 @@
-objects = qolib.o qlist.o
+objects = qolib.o qlist.o qonum.o
 test : test.c $(objects)
-	gcc -std=c11 -g -o test test.c qolib.o qlist.o -I.
+	gcc -std=c11 -g -o test test.c qolib.o qlist.o qonum.o -I.
 
 install : $(objects)
 	ar -cq libqolib.a $(objects)
@@ -11,6 +11,9 @@ qolib.o : qolib.c qolib.h constants.h
 
 qlist.o : qlist.c qlist.h qolib.h
 	gcc -std=c11 -c qlist.c
+
+qonum.o : qonum.c qonum.h constants.h
+	gcc -std=c11 qonum.c
 
 qonet.o : qonet.c qonet.h
 	gcc -std=c11 -c qonet.c
