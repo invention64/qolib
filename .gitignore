@@ -1,0 +1,5 @@
+#Compiled#
+##########
+*.o
+test
+error.log

@@ -50,10 +50,14 @@ int main(void)
 	{
 		printf("popped %d\n",stack_pop(stk).i);
 	}
+
+	printf("Severity is %d\nRunning tests of log levels\n\n", SEVERITY);
 	
-	qol_log(3,"test 1");
-	qol_log(4,"test 2");
-	qol_log(0,"test 3");
+	for (int i=0;i<5;i++)
+	{
+		qol_log(i," err");
+		printf("%d\n\n",i);
+	}
 
 	return 420;
 }

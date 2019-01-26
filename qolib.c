@@ -39,15 +39,17 @@ void msg_assert(int test, char * msg)
 
 void qol_log(int severity,char * msg)
 {
+	if (SEVERITY>severity){
+		return;	
+	}
+
 	time_t curr_t;
-	char* t_string;
+	char * t_string;
 	curr_t = time(NULL);
 	msg_assert(curr_t != ((time_t)-1),"Check time assignment");
 	t_string = ctime(&curr_t);
 	msg_assert(t_string!=NULL,"Check time string NULL");
-	if (severity<SEVERITY){
-		return;	
-	}
+
 	FILE * fp;
 
 	fp = fopen("error.log","a");
@@ -82,7 +84,7 @@ void qol_log(int severity,char * msg)
 
 qol_num * stopwatch( int (*f)() ,double test_num)
 {
-	qol_num generic[2];
+	qol_num * generic = malloc(sizeof(qol_num)*2);
 	struct timespec before_time,after_time;
 	timespec_get(&before_time, TIME_UTC);
 	generic[0].i = (*f)(test_num); //test if succeeds

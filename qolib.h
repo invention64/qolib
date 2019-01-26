@@ -9,9 +9,7 @@
 #define ERROR 3
 #define CRITICAL 4
 
-#ifndef SEVERITY
-#define SEVERITY 2
-#endif
+#define SEVERITY 0
 
 #define max(a,b) \
  ({ __typeof__ (a) _a = (a); \
@@ -21,7 +19,8 @@
  ({ __typeof__ (a) _a = (a); \
  __typeof__ (b) _b = (b); \
  _a < _b ? _a : _b; })
-#include "qolib.h"
+
+typedef union qol_num qol_num;
 
 //When we have a reference this needs to be front page
 typedef union qol_num {
