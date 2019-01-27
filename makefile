@@ -13,7 +13,7 @@ qlist.o : qlist.c qlist.h qolib.h
 	gcc -std=c11 -c qlist.c
 
 qonum.o : qonum.c qonum.h constants.h
-	gcc -std=c11 qonum.c
+	gcc -std=c11 -c qonum.c
 
 qonet.o : qonet.c qonet.h
 	gcc -std=c11 -c qonet.c

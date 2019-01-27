@@ -68,8 +68,8 @@ int main(void)
 	int notAPrime = 12;
 	int aPrime = 7;
 
-	printf("%d prime status: %d", notAPrime, isPrime(notAPrime));
-	printf("%d prime status: %d", aPrime, isPrime(aPrime));
+	printf("%d prime status: %d\r\n", notAPrime, isPrime(notAPrime));
+	printf("%d prime status: %d\r\n", aPrime, isPrime(aPrime));
 
 	return 420; // ecks dee
 }

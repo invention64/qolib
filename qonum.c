@@ -1,5 +1,6 @@
 #include "qonum.h"
 #include "constants.h"
+#include <stdlib.h>
 
 int isPrime(unsigned long long possiblePrime) {
 	if(possiblePrime % 2 == 0) {
