@@ -1,5 +1,10 @@
 #pragma once
-#include <netinet/in.h>
+
+#ifdef _WIN32
+    #include <winsock2.h>
+#else
+    #include <netinet/in.h>
+#endif
 
 typedef struct IP4 {
     struct sockaddr_in dst;

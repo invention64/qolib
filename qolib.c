@@ -1,10 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
+
+#ifdef _WIN32
+	#include "unistd.h"
+#else
+	#include <unistd.h>
+#endif
+
 #include <time.h>
 #include "constants.h"
 #include "qolib.h"
+
+#ifndef TIME_UTC
+	#define TIME_UTC 1
+#endif 
 
 //cab stands for CRASH AND BURN
 //Should this be a public function?

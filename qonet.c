@@ -3,8 +3,16 @@
 #include "qonet.h"
 #include "constants.h"
 #include "qolib.h"
-#include <sys/socket.h>
-#include <netinet/in.h>
+#include <time.h>
+
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <windows.h>
+#else
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+#endif
+
 #include <string.h>
 
 IP4 GenerateIPv4(char* dstIP, unsigned short dstPort) {
@@ -59,7 +67,8 @@ int SendArrayTCP(TCPClient client, char* data) {
 
 char* RecieveArrayTCP(TCPClient client, int bufferSize) {
     int sock = client.socket;
-    char buffer[bufferSize];
+
+    char * buffer = malloc(bufferSize * sizeof(*buffer));
     bzero(buffer, bufferSize);
     int amnt = recv(sock, buffer, bufferSize, 0);
     return buffer;
@@ -94,7 +103,7 @@ int SendArrayUDP(UDPClient client, IP4 target, char* data) {
 
 char* RecieveArrayUDP(UDPClient client, IP4 target, int bufferSize) {
     int sock = client.socket;
-    char buffer[bufferSize];
+    char * buffer = malloc(bufferSize * sizeof(*buffer));
     bzero(buffer, bufferSize);
     return recvfrom(sock, buffer, bufferSize, 0, &target.dst, sizeof(target.dst));
 }
