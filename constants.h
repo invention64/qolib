@@ -10,7 +10,7 @@
 #define False 0
 
 //Configurable Definitions
-#define SEVERITY 2
+#define SEVERITY 0
 
 //Immutable Definitions
 #define DEBUG 0

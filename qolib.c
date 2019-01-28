@@ -54,8 +54,12 @@ void qol_log(int severity,char * msg)
 	FILE * fp;
 
 	fp = fopen("qol.log","a");
-
-	char * out = (char *)malloc(20);	
+	if (fp==NULL)
+	{
+		printf("failed to open log");
+		return;
+	}	
+	char * out = (char *)malloc(500);	
 	
 	switch(severity)
 	{

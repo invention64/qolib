@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "qonet.h"
 #include "constants.h"
 #include "qolib.h"
@@ -17,7 +19,8 @@ IP4 GenerateIPv4(char* dstIP, unsigned short dstPort) {
     // Set DST
     struct in_addr ip;
     ip.s_addr = inet_addr(dstIP);
-    qol_log(0, sprintf("IP: %ld\r\n", ip.s_addr));
+    qol_log(0,"IP:");
+//		qol_log(0, ip.s_addr);
     dst.sin_family = AF_INET;
     dst.sin_addr = ip;
     dst.sin_port = htons(dstPort);
