@@ -69,7 +69,7 @@ char* RecieveArrayTCP(TCPClient client, int bufferSize) {
     int sock = client.socket;
 
     char * buffer = malloc(bufferSize * sizeof(*buffer));
-    bzero(buffer, bufferSize);
+    bzero(*buffer, bufferSize);
     int amnt = recv(sock, buffer, bufferSize, 0);
     return buffer;
 }
@@ -104,7 +104,7 @@ int SendArrayUDP(UDPClient client, IP4 target, char* data) {
 char* RecieveArrayUDP(UDPClient client, IP4 target, int bufferSize) {
     int sock = client.socket;
     char * buffer = malloc(bufferSize * sizeof(*buffer));
-    bzero(buffer, bufferSize);
+    bzero(*buffer, bufferSize);
     return recvfrom(sock, buffer, bufferSize, 0, &target.dst, sizeof(target.dst));
 }
 
