@@ -1,5 +1,4 @@
-#ifndef _constants_h
-#define _constants_h
+#pragma once
 
 //Should common structs be defined in here or in the lib file? 
 // In here - Sean
@@ -27,5 +26,3 @@
  ({ __typeof__ (a) _a = (a); \
  __typeof__ (b) _b = (b); \
  _a < _b ? _a : _b; })
-
-#endif

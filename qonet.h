@@ -1,5 +1,4 @@
-#ifndef _qonet_h
-#define _qonet_h
+#pragma once
 #include <netinet/in.h>
 
 typedef struct IP4 {
@@ -28,5 +27,3 @@ UDPClient OpenUDP();
 int SendArrayUDP(UDPClient client, IP4 target, char* data);
 char* RecieveArrayUDP(UDPClient client, IP4 target, int bufferSize);
 void CloseUDP(UDPClient client);
-
-#endif

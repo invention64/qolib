@@ -1,5 +1,4 @@
-#ifndef _qolib_h
-#define _qolib_h
+#pragma once
 
 typedef union qol_num qol_num;
 
@@ -24,5 +23,3 @@ void qassert(int test);
 qol_num * stopwatch( int (*f)() ,double test_num);
 
 void print_array(int * i);
-
-#endif

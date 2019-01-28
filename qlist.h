@@ -1,8 +1,8 @@
 //This file is for the lists originally created for qolib.c
 //When possible there should be sub files for bigger grouped libs
 //so that people can load them individually
-#ifndef _qlist_h
-#define _qlist_h
+#pragma once
+
 #include "qolib.h"
 
 typedef struct qol_piece qol_piece;
@@ -32,6 +32,4 @@ qol_num stack_pop(qol_list * list);
 void stack_push(qol_list * list, qol_num n);
 
 void qol_print_list(qol_list l);
-
-#endif
 

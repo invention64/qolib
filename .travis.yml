@@ -1,0 +1,9 @@
+sudo: required
+dist: trusy
+language: c
+
+before_script:
+- mkdir travis_ci
+- cd travis_ci
+
+script: gcc -std=c11 ../*.c -o test.exe
